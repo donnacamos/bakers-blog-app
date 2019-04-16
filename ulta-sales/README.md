@@ -1,8 +1,8 @@
 # Ulta::Sales
 
-Hello Beautiful! 
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ulta/sales`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-This app will show you Ulta beauty's sales on all personal beauty products real time! Just head over to the bin and start shopping. 
+TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
