@@ -10,3 +10,4 @@ Please DO NOT touch this repository in GitHub, as it will affect your Sandbox ex
 
 To learn more about the Sandbox, please visit http://help.learn.co/technical-support/learn-ide-in-browser/ide-in-browser-sandbox.
 # ulta-beauty-sales-
+# ulta-beauty-sales
