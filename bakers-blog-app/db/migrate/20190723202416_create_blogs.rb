@@ -1,6 +1,6 @@
 class CreateBlogs < ActiveRecord::Migration
   def change
-    create_table :blog_posts do |t|
+    create_table :blogs do |t|
       t.string :posts  
       t.string :recipe 
       t.integer :user_id 
