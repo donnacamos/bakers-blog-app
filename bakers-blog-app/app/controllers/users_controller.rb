@@ -9,13 +9,13 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email]) 
     # authenticate the user 
     if @user.authenticate(params[:password]) 
-    # log the user in 
-    session[:user_id] = @user.id 
-    # redirect to the user's landing page 
-    puts session 
-    redirect to "users/#{:user_id}" 
+      # log the user in 
+      session[:user_id] = @user.id 
+      # redirect to the user's landing page 
+      puts session 
+      redirect to "users/#{:user_id}" 
     else
-      
+      redirect to '/login' 
     end 
   end 
   
