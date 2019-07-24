@@ -1,3 +1,3 @@
 class Blog < ActiveRecord::Base
   belongs_to :user 
-end
+endhttps://learn.co/tracks/full-stack-web-development-v7/sinatra/activerecord/activerecord-in-sinatra#
