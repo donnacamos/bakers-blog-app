@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     # log the user in 
     session[:user_id] = @user.id 
     # redirect to the user's landing page 
+    puts session 
+    redirect to "users/#{:user_id}" 
     else
       
     end 
