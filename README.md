@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Hi! 👋
 
 You've opened the IDE Sandbox. 🎉
@@ -12,3 +13,6 @@ To learn more about the Sandbox, please visit http://help.learn.co/technical-sup
 # ulta-beauty-sales-
 # ulta-beauty-sales
 # bakers-blog
+=======
+
+>>>>>>> 3173347db10e56ed1d74a0dcd920327ad11094a7
