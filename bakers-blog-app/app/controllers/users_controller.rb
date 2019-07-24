@@ -5,10 +5,24 @@ class UsersController < ApplicationController
   end 
   
   post '/login' do 
-    
+    # find the user 
+    @user = User.find_by(email: params[:email]) 
+    # authenticate the user 
+    if @user.authenticate(params[:password]) 
+    # log the user in 
+    session[:user_id] = @user.id 
+    # redirect to the user's landing page 
+    else
+      
+    end 
   end 
   
   get '/signup' do 
+    
+  end 
+  
+  # SHOW route 
+  get '/user/:id' do  
     
   end 
 end 
