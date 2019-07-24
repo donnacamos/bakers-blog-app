@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end 
   
   get '/signup' do 
-    
+    erb :signup 
   end 
   
   # SHOW route 
