@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
   get "/" do 
     erb :welcome  
   end 
+<<<<<<< HEAD
   
   helpers do 
     
@@ -23,5 +24,7 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) 
     end 
   end 
+=======
+>>>>>>> 2feeca4d574e437c37bd448ce0427f233d6556b4
 
 end
