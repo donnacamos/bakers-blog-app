@@ -28,12 +28,20 @@ class UsersController < ApplicationController
       @user = User.create[:params] 
       redirect to "/users/#{@user.id}"
     else 
-    
+      redirect to '/signup' 
     end
   end 
   
   # SHOW route 
-  get '/user/:id' do  
+  get '/user/:id' do 
+    
+    @user = User.find_by(id: params[:id])
+    session[:user_id] = @user.id
     erb :'/users/show'
+  end 
+  
+  get '/logout' do 
+    session.clear 
+    redirect '/'
   end 
 end 
