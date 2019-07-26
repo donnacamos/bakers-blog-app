@@ -15,7 +15,7 @@ class Blogs < ApplicationController
     end 
     
     if params[:posts] != ""
-      @post = Post.create(posts: params[:posts], recipes: params[:recipes], user_id: current_user.id) 
+      @post = Post.create(posts: params[:content], recipes: params[:recipes], user_id: current_user.id) 
       redirect to '/posts/#{@post.id}' 
     else 
       redirect to '/posts/show' 
@@ -26,5 +26,10 @@ class Blogs < ApplicationController
       erb :'/posts/show'   
     end 
    end
+   
+     get '/posts/:id/edit' do 
+       
+       erb :'/posts/edit' 
+     end 
    
 end 

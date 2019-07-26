@@ -1,7 +1,7 @@
 class CreateBlogs < ActiveRecord::Migration
   def change
-    create_table :blogs do |t| 
-      t.string :posts 
+    create_table :posts do |t| 
+      t.string :content  
       t.string :recipes 
       t.integer :user_id 
       

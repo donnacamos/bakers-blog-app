@@ -13,8 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20190726151029) do
 
-  create_table "blogs", force: :cascade do |t|
-    t.string  "posts"
+  create_table "posts", force: :cascade do |t|
+    t.string  "content"
     t.string  "recipes"
     t.integer "user_id"
   end
