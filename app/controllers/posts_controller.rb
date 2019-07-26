@@ -1,4 +1,4 @@
-class Blogs < ApplicationController 
+class Posts < ApplicationController 
   
   # get posts/new 
   
@@ -29,11 +29,28 @@ class Blogs < ApplicationController
    
      get '/posts/:id/edit' do 
        set_post 
-       erb :'/posts/edit' 
+       if logged_in?
+         if @post.user = current_user 
+           erb :'/posts/edit' 
+         else
+           redirect to '/posts/#{current_user.id}'
+       else 
+         redirect to '/'
+       end 
+     end 
+         
      end 
      
      patch '/posts/:id' do 
        set_post
+      if logged_in?
+         if @post.user = current_user 
+           erb :'/posts/edit' 
+         else
+           redirect to '/posts/#{current_user.id}'
+       else 
+         redirect to '/'
+       end  
      end 
      
      get set_post 
