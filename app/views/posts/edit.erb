@@ -1,5 +1,6 @@
 <h1>Edit A Post:</h1>
-<form action="/posts/new" method="POST"> 
+<form action="/posts/<% post.id %>" method="POST"> 
+  <input type="hidden" name="_method" value="patch"> 
   <label>Post:</label> 
   <input type="text" name="content" value="">
   <label>Recipe:</label>
