@@ -22,14 +22,22 @@ class Blogs < ApplicationController
     end 
     
     get '/posts/:id' do  
-      @post = Post.find(params[:id]) 
+      set_post  
       erb :'/posts/show'   
     end 
    end
    
      get '/posts/:id/edit' do 
-       
+       set_post 
        erb :'/posts/edit' 
+     end 
+     
+     patch '/posts/:id' do 
+       set_post
+     end 
+     
+     get set_post 
+       @post = Post.find(params[:id])
      end 
    
 end 
