@@ -18,7 +18,12 @@ class Blogs < ApplicationController
       @post = Post.create(posts: params[:posts], recipes: params[:recipes], user_id: current_user.id) 
       redirect to '/posts/#{@post.id}' 
     else 
-      
+      redirect to '/posts/show' 
+    end 
+    
+    get '/posts/:id' do  
+      @post = Post.find(params[:id]) 
+      erb :'/posts/show'   
     end 
    end
    
