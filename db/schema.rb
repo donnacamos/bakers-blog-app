@@ -11,22 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190723202416) do
+ActiveRecord::Schema.define(version: 20190726151029) do
 
-  create_table "blog_posts", force: :cascade do |t|
-    t.string   "posts"
-    t.string   "recipe"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "blogs", force: :cascade do |t|
+    t.string  "posts"
+    t.string  "recipes"
+    t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "user", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
