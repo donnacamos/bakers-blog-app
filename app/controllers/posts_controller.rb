@@ -58,6 +58,18 @@ class Posts < ApplicationController
          redirect to '/'
      end 
      
+     delete '/posts/:id' do 
+       set_journal_entry
+       if authorized_to_edit(@posts)
+         @post.destroy
+         redirect to '/posts'  
+       else 
+         redirect to '/posts' 
+       end 
+     end 
+     
+     
+     
      get set_post 
        @post = Post.find(params[:id])
      end 
