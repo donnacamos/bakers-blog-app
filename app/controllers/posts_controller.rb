@@ -39,9 +39,9 @@ class Posts < ApplicationController
            erb :'/posts/edit' 
          else
            redirect to '/posts/#{current_user.id}'
+         end 
        else 
          redirect to '/'
-       end 
      end 
          
      end 
@@ -53,9 +53,9 @@ class Posts < ApplicationController
            erb :'/posts/edit' 
          else
            redirect to '/posts/#{current_user.id}'
+         end 
        else 
          redirect to '/'
-       end  
      end 
      
      get set_post 

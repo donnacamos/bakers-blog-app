@@ -1,7 +1,9 @@
 <h1>Blog Post</h1>
 
-<p><% @post.content %></p> 
+<p><% @post.content %></p>
 
-<a href='/posts/<% @post.id %>/edit'>Edit</a> 
+<% if authorized_to_edit(@post) %>
+
+<a href='/posts/<% @post.id %>/edit'>Edit your entry</a> 
 
 <a href='/posts/delete'>Delete</a> 
