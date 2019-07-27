@@ -49,7 +49,7 @@ class Posts < ApplicationController
      patch '/posts/:id' do 
        set_post
       if logged_in?
-         if @post.user = current_user 
+         if @post.user = current_user && params[:content] != "" 
            erb :'/posts/edit' 
          else
            redirect to '/posts/#{current_user.id}'
