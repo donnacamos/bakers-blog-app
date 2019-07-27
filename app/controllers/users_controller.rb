@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # What routes do I need for login? 
   get '/login' do 
-    erb :login 
+    erb :'/users/login'  
   end 
   
   post '/login' do 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end 
   
   get '/signup' do 
-    erb :signup 
+    erb :'/users/signup'  
   end 
   
   post '/users' do 
