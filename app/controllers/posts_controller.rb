@@ -21,7 +21,7 @@ class Posts < ApplicationController
     
     if params[:posts] != ""
       @post = Post.create(posts: params[:content], recipes: params[:recipes], user_id: current_user.id) 
-      redirect to '/posts/#{@post.id}' 
+      redirect to "/posts/#{@post.id}" 
     else 
       redirect to '/posts/show' 
     end 
@@ -38,7 +38,7 @@ class Posts < ApplicationController
          if authorized_to_edit?(@posts)  
            erb :'/posts/edit' 
          else
-           redirect to '/posts/#{current_user.id}'
+           redirect to "/posts/#{current_user.id}" 
          end 
        else 
          redirect to '/'
@@ -52,7 +52,7 @@ class Posts < ApplicationController
          if @post.user = current_user && params[:content] != "" 
            erb :'/posts/edit' 
          else
-           redirect to '/posts/#{current_user.id}'
+           redirect to "/posts/#{current_user.id}" 
          end 
        else 
          redirect to '/'
