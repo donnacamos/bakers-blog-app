@@ -23,12 +23,13 @@ class Posts < ApplicationController
       flash[:errors] = "Something went wrong - you must provide content for your post."
       redirect to '/posts/show' 
     end 
+  end 
     
     get '/posts/:id' do  
       set_post  
       erb :'/posts/show'   
     end 
-   end
+  
    
      get '/posts/:id/edit' do 
        redirect_if_not_logged_in
@@ -63,10 +64,9 @@ class Posts < ApplicationController
        end 
      end 
      
-     
+     private 
      
      get set_post 
        @post = Post.find(params[:id])
      end 
-   
 end 
