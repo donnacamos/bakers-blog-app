@@ -12,8 +12,8 @@ class UsersController < ApplicationController
       # log the user in 
       session[:user_id] = @user.id 
       # redirect to the user's landing page 
-      puts session 
-      redirect to "users/#{:user_id}" 
+      flash[:message] = "Welcome, #{@user.name}!"
+      redirect "users/#{@user.id}"
     else
       flash[:message] = "Your credientials were invalid. Please sign up or try again." 
       redirect to '/login' 
@@ -21,15 +21,19 @@ class UsersController < ApplicationController
   end 
   
   get '/signup' do 
+    redirect_if_logged_in
     erb :'/users/signup'  
   end 
   
   post '/users' do 
-    if params[:name] != "" && params[:email] != "" && params[:password] != "" 
-      @users = User.create[:params] 
-      redirect to "/users/#{@users.id}"  
-    else 
-      redirect to '/signup' 
+       @user = User.new(params)
+      if @user.save
+        session[:user_id] = @user.id 
+        flash[:message] = "You have successfully created an account, #{@user.name}! Welcome!"
+        redirect "/users/#{@user.id}"
+      else 
+       flash[:errors] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
+       redirect '/signup' 
     end
   end 
   
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
   get '/users/:id' do 
     
     @users = User.find_by(id: params[:id])
-    session[:user_id] = @users.id
+    redirect_if_not_logged_in
     erb :'/users/show'
   end 
   

@@ -38,6 +38,19 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit?(post)
       post.user == current_user
     end 
-  end 
+  
+    def redirect_if_not_logged_in
+      if !logged_in?
+        flash[:errors] = "You must be logged in to view the page you tried to view."
+        redirect '/'
+      end
+    end
+    
+    def redirect_if_logged_in
+      if logged_in?
+        redirect "/users/#{current_user.id}"
+      end
+    end
 
+  end 
 end
