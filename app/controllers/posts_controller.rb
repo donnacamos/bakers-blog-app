@@ -19,10 +19,12 @@ class Posts < ApplicationController
       redirect to '/'
     end 
     
-    if params[:posts] != ""
+    if params[:content] != ""
       @post = Post.create(posts: params[:content], recipes: params[:recipes], user_id: current_user.id) 
+      flash[:message] = "Blog post successfully created." if @post.id
       redirect to "/posts/#{@post.id}" 
     else 
+      flash[:errors] = "Something went wrong - you must provide content for your post."
       redirect to '/posts/show' 
     end 
     

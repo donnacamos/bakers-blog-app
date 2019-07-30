@@ -1,5 +1,6 @@
 require './config/environment'
 
+
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -7,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :sessions_secret, "bakers_blog_app" 
+    register Sinatra::Flash 
   end
 
   get "/" do 
