@@ -1,7 +1,7 @@
 <h1>Index Page for Blog Posts</h1>
 
-  <%= @posts.each do |post| %>
-  <h4><a href="/posts/<% post.id %>"><%= post.content.create_at %></a></h4>
+  <% @posts.each do |post| %>
+  <h4><a href="/posts/<%= post.id %>"><%= post.content.create_at %></a></h4>
   <p><%= post.content %></p>
   <p>By <%= post.user.name %></p>
   <br><br> 

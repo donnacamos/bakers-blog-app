@@ -1,7 +1,7 @@
-class Posts < ApplicationController 
+class PostsController < ApplicationController 
   
   get '/posts' do 
-    @post = Post.all 
+    @posts = Post.all 
     erb :'/posts/index' 
   end 
   
@@ -66,7 +66,10 @@ class Posts < ApplicationController
      
      private 
      
-     get set_post 
+     helpers do 
+     
+     def set_post 
        @post = Post.find(params[:id])
      end 
+   end 
 end 

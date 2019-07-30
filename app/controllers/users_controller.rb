@@ -21,7 +21,6 @@ class UsersController < ApplicationController
   end 
   
   get '/signup' do 
-    redirect_if_logged_in
     erb :'/users/signup'  
   end 
   
@@ -40,7 +39,7 @@ class UsersController < ApplicationController
   # SHOW route 
   get '/users/:id' do 
     
-    @users = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
     redirect_if_not_logged_in
     erb :'/users/show'
   end 
