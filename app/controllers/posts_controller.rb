@@ -8,19 +8,15 @@ class Posts < ApplicationController
   # get posts/new 
   
    get '/posts/new' do 
+     redirect_if_not_logged_in
      erb :'/posts/new' 
    end 
    
    post '/posts' do 
-    raise params.inspect 
-    
-    
-    if !logged_in
-      redirect to '/'
-    end 
+     redirect_if_not_logged_in
     
     if params[:content] != ""
-      @post = Post.create(posts: params[:content], recipes: params[:recipes], user_id: current_user.id) 
+      @post = Post.create(content: params[:content], recipes: params[:recipes], user_id: current_user.id) 
       flash[:message] = "Blog post successfully created." if @post.id
       redirect to "/posts/#{@post.id}" 
     else 
@@ -35,36 +31,33 @@ class Posts < ApplicationController
    end
    
      get '/posts/:id/edit' do 
+       redirect_if_not_logged_in
        set_post 
-       if logged_in?
-         if authorized_to_edit?(@posts)  
-           erb :'/posts/edit' 
-         else
-           redirect to "/posts/#{current_user.id}" 
-         end 
-       else 
-         redirect to '/'
-     end 
+        if authorized_to_edit?(@posts)  
+          erb :'/posts/edit' 
+        else
+          redirect to "/posts/#{current_user.id}" 
+        end 
+      end 
          
-     end 
      
      patch '/posts/:id' do 
+       redirect_if_not_logged_in
        set_post
-      if logged_in?
-         if @post.user = current_user && params[:content] != "" 
-           erb :'/posts/edit' 
-         else
-           redirect to "/posts/#{current_user.id}" 
-         end 
-       else 
-         redirect to '/'
+        if @post.user = current_user && params[:content] != "" 
+          @post.update(content: params[:content]) 
+          redirect "/posts/#{@post.id}" 
+        else
+          redirect to "/users/#{current_user.id}" 
+        end 
      end 
      
      delete '/posts/:id' do 
-       set_journal_entry
-       if authorized_to_edit(@posts)
+       set_post 
+       if authorized_to_edit?(@posts)
          @post.destroy
-         redirect to '/posts'  
+         flash[:message] = "Successfully deleted that post."
+          redirect to '/posts'  
        else 
          redirect to '/posts' 
        end 
