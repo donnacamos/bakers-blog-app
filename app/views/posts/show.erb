@@ -1,13 +1,18 @@
-<h1>Blog Post</h1>
+<h3><%= @post.title %></h3>
+<p><%= @post.content %></p>
+<p>Recipe: <%= @post.recipe %></p>
 
-<p><% @post.content %></p>
+<p>Created by: <%= @post.user.name %></p>
+
+<p>created on <%= @post.formatted_created_at %></p>
+
 
 <% if authorized_to_edit?(@post) %>
-<a href='/posts/<% @post.id %>/edit'>Edit your Post</a> 
-<br><br> 
-<form class="" action="/posts/<% @post.id %>" method="POST"> 
-<input type="hidden" name="_method" value="DELETE"> 
-<input type="submit" name="" value="Delete this post">
-  
-</form>
-<% end %> 
+  <a href="/posts/<%= @post.id %>/edit">Edit Entry</a>
+  <br><br>
+  <form class="" action="/posts/<%= @post.id %>" method="post"> 
+    <!-- How do I turn this form submission into a DELETE request??? -->
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
+<% end %>

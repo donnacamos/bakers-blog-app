@@ -15,7 +15,7 @@ class PostsController < ApplicationController
    post '/posts' do 
      redirect_if_not_logged_in
     if params[:content] != ""
-      @post = Post.create(content: params[:content], user_id: current_user.id) 
+      @post = Post.create(content: params[:content], title: params[:title], recipe: params[:recipe], user_id: current_user.id) 
       flash[:message] = "Blog post successfully created." if @post.id
       redirect to "/posts/#{@post.id}" 
     else 
