@@ -1,7 +1,7 @@
 <h3>All Blog Posts</h3>
 
   <% @posts.each do |post| %>
-  <h4><a href="/posts/<%= post.id %>"><%= post.content %></a></h4>
+  <h4><a href="/posts/<%= post.id %>"><%= post.title %></a></h4>
   <p>By <%= post.user.name %></p>
   <br><br> 
 <% end %> 
