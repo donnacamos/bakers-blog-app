@@ -33,7 +33,7 @@ class PostsController < ApplicationController
      get '/posts/:id/edit' do 
        redirect_if_not_logged_in
        set_post 
-        if authorized_to_edit?(@posts)  
+        if authorized_to_edit?(@post)  
           erb :'/posts/edit' 
         else
           redirect to "/posts/#{current_user.id}" 
@@ -48,13 +48,13 @@ class PostsController < ApplicationController
           @post.update(content: params[:content]) 
           redirect "/posts/#{@post.id}" 
         else
-          redirect to "/users/#{current_user.id}" 
+          redirect "/users/#{current_user.id}" 
         end 
      end 
      
      delete '/posts/:id' do 
        set_post 
-       if authorized_to_edit?(@posts)
+       if authorized_to_edit?(@post)
          @post.destroy
          flash[:message] = "Successfully deleted that post."
           redirect to '/posts'  
