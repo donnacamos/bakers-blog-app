@@ -8,10 +8,9 @@
 
 
 <% if authorized_to_edit?(@post) %>
-  <button><a href="/posts/<%= @post.id %>/edit">Edit Entry</a></button>
+  <a href="/posts/<%= @post.id %>/edit">Edit Entry</a>
   <br><br>
-  <form class="" action="/posts/<%= @post.id %>" method="post"> 
-    <!-- How do I turn this form submission into a DELETE request??? -->
+  <form class="" action="/posts/<%= @post.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" name="" value="Delete this Entry">
   </form>

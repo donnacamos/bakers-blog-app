@@ -1,7 +1,9 @@
 <h3>All Blog Posts</h3>
 
   <% @posts.each do |post| %>
-  <h4><a href="/posts/<%= post.id %>"><%= post.title %></a></h4>
-  <p>By <%= post.user.name %></p>
+  <h4><a href="/posts/<%= post.id %>"><%= post.created_at %></a></h4>
+  <strong><%= post.title %></strong>
+  <p><%= post.content %></p>
+  <p>Recipe: <%= post.recipe %></p>
   <br><br> 
 <% end %> 
