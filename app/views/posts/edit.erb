@@ -1,9 +1,13 @@
 <h1>Edit A Post:</h1>
-<form action="/posts/<% @post.id %>" method="POST"> 
-  <input type="hidden" name="_method" value="patch"> 
-  <label>Post:</label> 
-  <input type="text" style="width:auto: height:auto" name="content" value="">
-  <label>Recipe:</label>
-  <input type="text" style="width:auto: height:auto" name="recipes" value="">
-  <input type="submit" name="Edit Post"> 
+<form class="" action="/posts/<%= @post.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="title">Title:</label>
+  <input type="text" name="title" value ="<%=@post.title %>">
+  <label for="content">Content:</label>
+  <textarea name="content" style="width:auto; height:auto;"><%= @post.content %></textarea>
+  <label for="recipe">Recipe:</label>
+  <input type="text" name="recipe" value ="<%= @post.recipe %>">
+  <input type="submit" name="" value="Edit Post"> 
 </form>
+
+<button><a href="/posts">Back</a></button>
