@@ -44,7 +44,7 @@ class PostsController < ApplicationController
      patch '/posts/:id' do 
        redirect_if_not_logged_in
        set_post
-        if @post.user = current_user && params[:content] != "" 
+        if @post.user == current_user && params[:content] != "" 
           @post.update(content: params[:content]) 
           redirect "/posts/#{@post.id}" 
         else
