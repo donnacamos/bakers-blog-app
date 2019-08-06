@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       redirect to "/posts/#{@post.id}" 
     else 
       flash[:errors] = "Something went wrong - you must provide content for your post."
-      redirect to '/posts/show' 
+      redirect to '/posts/new' 
     end 
   end 
     
