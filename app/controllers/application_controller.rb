@@ -21,12 +21,12 @@ class ApplicationController < Sinatra::Base
   
   helpers do 
     
-    def redirect_if_not_logged_in
-      if !logged_in?
-        redirect "/login?error=You have to be logged in to do that"
-      end
-    end
-
+    def redirect_if_not_authorized 
+      if current_user 
+       
+        # post doesn't belong to the current user send them to their home page
+    end 
+    
     def logged_in?
       !!current_user
     end
