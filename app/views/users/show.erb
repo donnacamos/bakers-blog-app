@@ -2,3 +2,8 @@
 
 <h3>Email: </h3>
 <h4><%= @user.email %></h4>
+
+<h3>Posts: </h3>
+<% @posts.each do |post| %>
+<h4><%= post.title %></h4>
+<% end %>

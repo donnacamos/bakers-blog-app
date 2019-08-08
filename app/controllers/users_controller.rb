@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   get '/users/:id' do 
     
     @user = User.find_by(id: params[:id])
+    @posts = @user.posts 
     redirect_if_not_logged_in
     erb :'/users/show'
   end 
