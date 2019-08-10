@@ -22,10 +22,14 @@ class ApplicationController < Sinatra::Base
   helpers do 
     
     def redirect_if_not_authorized 
-      if current_user 
-       
-        # post doesn't belong to the current user send them to their home page
-    end 
+        if @post.user == current_user && params[:content] != "" 
+          @post.update(content: params[:content]) 
+          redirect "/posts/#{@post.id}" 
+        else
+          redirect "/users/#{current_user.id}" 
+        end 
+         # post doesn't belong to the current user send them to their home page
+      end 
     
     def logged_in?
       !!current_user
